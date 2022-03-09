@@ -1,13 +1,19 @@
 var express = require('express');
 var app = express();
 
-app.get('/', (req, res)=>{
-    console.log('Se requiere el GET')
-    res.json({
-        valor:true
-    })
-})
+require('dotenv').config();
+console.log(process.env)
 
-app.listen(4000, ()=>{
+// app.get('/', (req, res)=>{
+//     console.log('Se requiere el GET')
+//     res.json({
+//          valor:true
+//     })
+// })
+
+//Aqui entra el Middleware
+app.use(express.static('public')) 
+
+app.listen(process.env.PORT, ()=>{
     console.log('Servidor corriendo')
 })
